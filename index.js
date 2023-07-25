@@ -45,17 +45,18 @@ nextButton.addEventListener("click", function(event){
   }
   console.log("Page: ",page)
   fetchCharacters()
-  
+  pagination.innerHTML = `${page} / 42`
   
 });
 
 prevButton.addEventListener("click", function(event){ 
   page--
-  if (page < 0){
-    page = 0
+  if (page < 1){
+    page = 1
   }
   console.log("Page: ",page)
   fetchCharacters()
+  pagination.innerHTML = `${page} / 42`
 
   console.log("prevButton")
 });
