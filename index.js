@@ -1,8 +1,7 @@
 import { createCharacterCard } from "./components/card/card.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
-const searchBarContainer = document.querySelector(
-  '[data-js="search-bar-container"]'
+const searchBarContainer = document.querySelector('[data-js="search-bar-container"]'
 );
 export const searchBar = document.querySelector('[data-js="search-bar"]');
 export const navigation = document.querySelector('[data-js="navigation"]');
@@ -11,17 +10,20 @@ export const nextButton = document.querySelector('[data-js="button-next"]');
 export const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
-const maxPage = 1;
+let maxPage = 42;
 let page = 1;
-const searchQuery = "";
+// const searchQuery = "";
+let searchQuery = "";
 
 
 async function fetchCharacters() {
-
-  const response = await fetch(`https://rickandmortyapi.com/api/character?page=${page}`);
+  console.log("Name in fetchChars: ", searchQuery)
+  const response = await fetch(`https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`);
   const character = await response.json();
   cardContainer.innerHTML = "";
   character.results.forEach((result) => {
+    console.log("Fetch: Max_pages", maxPage)
+    maxPage = character.info.pages;
     const name = result.name;
     const status = result.status;
     const type = result.species;
@@ -29,6 +31,8 @@ async function fetchCharacters() {
     const image = result.image;
     const cards = createCharacterCard(name, status, type, ocurrences, image);
     cardContainer.append(cards);
+    pagination.innerHTML = `${page} / ${maxPage}`;
+    
   });
 
   console.log('char',character);
@@ -40,12 +44,13 @@ fetchCharacters()
 nextButton.addEventListener("click", function(event){ 
   page++
   
-  if (page > 42){
-    page = 42
+  if (page > maxPage){
+    page = maxPage
   }
   console.log("Page: ",page)
   fetchCharacters()
-  pagination.innerHTML = `${page} / 42`
+  
+  pagination.innerHTML = `${page} / ${maxPage}`
   
 });
 
@@ -56,8 +61,17 @@ prevButton.addEventListener("click", function(event){
   }
   console.log("Page: ",page)
   fetchCharacters()
-  pagination.innerHTML = `${page} / 42`
+  pagination.innerHTML = `${page} / ${maxPage}`
 
   console.log("prevButton")
 });
 
+searchBarContainer.addEventListener("input", (event) => {
+  page = 1;
+  console.log(event.target.value);
+  const name = event.target.value
+  console.log("nameInContainer: ",name);
+  searchQuery = name
+  fetchCharacters()
+  console.log("Search Bar: Max Pages", maxPage)
+});
