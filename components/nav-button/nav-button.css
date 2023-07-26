@@ -3,9 +3,9 @@
   border: none;
   color: var(--color-granite);
   font-size: 1.2rem;
-  transition: 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Modified transition property */
 }
 
 .button:hover {
   background-color: var(--color-nemo);
-}
+  transform: scale(1.1); /* Added scale transformation on hover */

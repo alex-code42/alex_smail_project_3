@@ -36,26 +36,26 @@ fetchCharacters(variables.page, variables.searchQuery);
 createButton();
 createSearchBar();
 
-// prevButton.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   if (page > 1) {
-//     page--;
-//     fetchCharacters(page, searchQuery);
-//   }
-// });
+ prevButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (page > 1) {
+    page--;
+    fetchCharacters(page, searchQuery);
+  }
+});
 
-// nextButton.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   if (page <= maxPage) {
-//     page++;
-//     fetchCharacters(page, searchQuery);
-//   }
-// });
+nextButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (page <= maxPage) {
+    page++;
+    fetchCharacters(page, searchQuery);
+  }
+});
 
-// searchBar.addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   searchQuery = event.target.firstElementChild.value;
-//   page = 1;
-//   fetchCharacters(page, searchQuery);
-//   console.log(searchQuery);
-// });
+searchBar.addEventListener("submit", (event) => {
+  event.preventDefault();
+  searchQuery = event.target.firstElementChild.value;
+  page = 1;
+  fetchCharacters(page, searchQuery);
+  console.log(searchQuery);
+});

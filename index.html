@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <h1 class="title">Rick and More</h1>
+    <h1 class="title">Rick and Morty App</h1>
     <main>
       <div class="search-bar-container" data-js="search-bar-container">
         <form action="" class="search-bar" data-js="search-bar">
@@ -18,7 +18,7 @@
             name="query"
             class="search-bar__input"
             type="text"
-            placeholder="search characters"
+            placeholder="search character"
             aria-label="character name"
           />
           <button class="search-bar__button" aria-label="search for character">
@@ -32,7 +32,7 @@
       </div>
 
       <ul class="card-container" data-js="card-container">
-        <!-- <li class="card">
+        <li class="card">
           <div class="card__image-container">
             <img
               class="card__image"
@@ -52,24 +52,28 @@
               <dd class="card__info-description">51</dd>
             </dl>
           </div>
-        </li> -->
+        </li>
       </ul>
     </main>
     <nav class="navigation" data-js="navigation">
       <button class="button button--prev" data-js="button-prev">
-        previous
+        <span class="button-text">previous</span>
       </button>
-      <span class="navigation__pagination" data-js="pagination">1 / 1</span>
-      <button class="button button--next" data-js="button-next">next</button>
+      <span class="navigation__pagination" data-js="pagination">
+        <span class="pagination-text">1 / 1</span>
+      </span>
+      <button class="button button--next" data-js="button-next">
+        <span class="button-text">next</span>
+      </button>
     </nav>
   </body>
   <script type="module" src="./index.js"></script>
-  <!-- <script type="module" src="./components/card/card.js"></script>
+  <script type="module" src="./components/card/card.js"></script>
   <script type="module" src="./components/nav-button/nav-button.js"></script>
   <script
     type="module"
     src="./components/nav-pagination/nav-pagination.js"
   ></script>
-  <script type="module" src="./components/search-bar/search-bar.js"></script> -->
+  <script type="module" src="./components/search-bar/search-bar.js"></script>
 </html>
 
