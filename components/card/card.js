@@ -1,3 +1,7 @@
+import { maxPage } from "../../index.js";
+
+
+
 export function createCharacterCard(name, status, type, ocurrences, image) {
   
     // create a new list Item with class Card

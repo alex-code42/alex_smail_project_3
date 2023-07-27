@@ -1,4 +1,6 @@
 import { createCharacterCard } from "./components/card/card.js";
+import { changeButtonColor } from "./components/nav-button/nav-button.js";
+
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector('[data-js="search-bar-container"]'
@@ -10,8 +12,8 @@ export const nextButton = document.querySelector('[data-js="button-next"]');
 export const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
-let maxPage = 42;
-let page = 1;
+export let maxPage = 42;
+export let page = 1;
 // const searchQuery = "";
 let searchQuery = "";
 
@@ -33,8 +35,12 @@ async function fetchCharacters() {
     const cards = createCharacterCard(name, status, type, ocurrences, image);
     cardContainer.append(cards);
     pagination.innerHTML = `${page} / ${maxPage}`;
+    changeButtonColor()
+
     
   });
+
+
 
   console.log('char',character);
   
@@ -44,10 +50,11 @@ fetchCharacters()
 
 nextButton.addEventListener("click", function(event){ 
   page++
-  
+
   if (page > maxPage){
     page = maxPage
   }
+  
   console.log("Page: ",page)
   fetchCharacters()
   
@@ -57,9 +64,10 @@ nextButton.addEventListener("click", function(event){
 
 prevButton.addEventListener("click", function(event){ 
   page--
-  if (page < 1){
+  if (page <= 1){
     page = 1
   }
+  
   console.log("Page: ",page)
   fetchCharacters()
   pagination.innerHTML = `${page} / ${maxPage}`

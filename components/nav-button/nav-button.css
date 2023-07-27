@@ -9,3 +9,13 @@
 .button:hover {
   background-color: var(--color-nemo);
 }
+
+.black{
+  background-color:black;
+  color: aliceblue;
+}
+
+.black:hover{
+  background-color:black;
+  color: aliceblue;
+}
