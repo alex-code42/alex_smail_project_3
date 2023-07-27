@@ -21,6 +21,7 @@ async function fetchCharacters() {
   const response = await fetch(`https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`);
   const character = await response.json();
   cardContainer.innerHTML = "";
+  
   character.results.forEach((result) => {
     console.log("Fetch: Max_pages", maxPage)
     maxPage = character.info.pages;
