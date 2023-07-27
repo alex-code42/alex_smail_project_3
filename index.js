@@ -19,9 +19,15 @@ let searchQuery = "";
 
 
 async function fetchCharacters() {
+  
+  try {
   console.log("Name in fetchChars: ", searchQuery)
+  
+  
   const response = await fetch(`https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`);
   const character = await response.json();
+
+ 
   cardContainer.innerHTML = "";
   
   character.results.forEach((result) => {
@@ -36,13 +42,20 @@ async function fetchCharacters() {
     cardContainer.append(cards);
     pagination.innerHTML = `${page} / ${maxPage}`;
     changeButtonColor()
+    
 
     
   });
+} catch (error) {
+  console.error(error);
+  console.log("yes__yes")
+  cardContainer.innerHTML = `<br> <br> Character not found!`;
+  // Expected output: ReferenceError: nonExistentFunction is not defined
+  // (Note: the exact output may be browser-dependent)
+}
 
 
-
-  console.log('char',character);
+  
   
 }
 
